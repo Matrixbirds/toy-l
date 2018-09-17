@@ -42,11 +42,10 @@ module Token
     end
 
     if @last_char == '#'
-      while line=gets
+      while line = gets
         @comment_str = line
         return TOK_COMMENT
       end
-      # gettok if @last_char != '\n' && @last_char != '\r'
     end
 
     this_char = @last_char
@@ -74,5 +73,6 @@ module Token
     val =~ /\r\n|\n/
   end
 
-  module_function :gettok, :isspace, :isdigit, :isalpha, :isalnum, :isnewline
+  attr_reader :id_str, :last_char
+  module_function :gettok, :isspace, :isdigit, :isalpha, :isalnum, :isnewline, :id_str, :last_char
 end
